@@ -1,0 +1,102 @@
+.followers__wrapper {
+  width: 100%;
+  margin-left: 25px;
+  margin-top: -18px;
+
+  .followers {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+
+    &__round {
+      display: flex;
+      align-items: center;
+
+      &-img {
+        border-radius: 50px;
+        width: 55px;
+      }
+
+      &--content {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+
+        &-user {
+          color: grey;
+          margin-left: 10px;
+          font-size: 14px;
+        }
+      }
+
+      &-bio {
+        font-size: 14px;
+        font-weight: 300;
+        color: grey;
+      }
+    }
+
+    &-btn {
+      font-size: 13px;
+      font-weight: 500;
+      padding: 4px 15px;
+      border-radius: 6px;
+      border: 1px solid #d0d7de;
+      background-color: #f6f8fa;
+      &:hover {
+        background-color: #eef1f5;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .followers__wrapper {
+    margin-left: 0;
+  }
+
+  .followers__round-img {
+    margin-right: 50px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .followers__wrapper {
+    margin-left: 0;
+  }
+
+  .followers__round-img {
+    margin-right: 10px;
+  }
+
+  .followers__round--content {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .followers__wrapper {
+    margin-left: 0;
+  }
+
+  .followers__round-img {
+    margin-right: 0px;
+  }
+
+  .followers__round--content {
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .followers__round--content {
+    margin-left: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .followers__round--content-name {
+    margin: 0 0 0 -30px;
+  }
+}
