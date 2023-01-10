@@ -62,17 +62,17 @@ const index = () => {
                                 <span className='sideup__list--item-number ms-2'>{array.public_repos}</span>
                             </li>
 
-                            <li className="sideup__list--item">
+                            <li className="sideup__list--item itemthree">
                                 <span className='sideup__list--item-icon me-2'> <i class="bi bi-border-all"></i> </span>
                                 <NavLink className='sideup__list--item-link' to="/projects">Projects</NavLink>
                             </li>
 
-                            <li className="sideup__list--item">
+                            <li className="sideup__list--item itemtwoo">
                                 <span className='sideup__list--item-icon me-2'> <i class="bi bi-box"></i> </span>
                                 <NavLink className='sideup__list--item-link' to="/packages">Packages</NavLink>
                             </li>
 
-                            <li className="sideup__list--item">
+                            <li className="sideup__list--item itemLast">
                                 <span className='sideup__list--item-icon me-2'> <i class="bi bi-star"></i> </span>
                                 <NavLink className='sideup__list--item-link' to="/stars">Stars</NavLink>
                             </li>

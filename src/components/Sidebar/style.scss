@@ -87,6 +87,29 @@
     }
 }
 
+@media only screen and (max-width: 850px) {
+
+.sidebar__content {
+    width: 280px;
+    &-img {
+        width: 275px;
+    }
+    &--round {
+        position: absolute;
+        text-align: center;
+        top: 210px;
+        right: 15px;
+        width: 37px;
+        padding: 7px;
+        height: 37px;
+        border: 1px solid grey;
+        border-radius: 100%;
+        background-color: white;
+    }
+}
+    
+}
+
 @media only screen and (max-width: 767px) {
     .sidebar__content--section {
         display: flex;

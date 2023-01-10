@@ -29,7 +29,7 @@ const index = () => {
                                 <img className="followers__round-img" src={element.avatar_url} alt="person" />
                                 <div className='followers__round--content'>
                                     {/* <p className="followers__round--content-name">name</p> */}
-                                    <p className="followers__round--content-user">{element.login}</p>
+                                    <a href={element.html_url} target="_blank" className="followers__round--content-user">{element.login}</a>
                                 </div>
                             </div>
                             <button className="followers-btn">Unfollow</button>

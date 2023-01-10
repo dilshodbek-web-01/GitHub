@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../../context/Context';
 import "./style.scss";
+import Github from "../../assets/images/github.png";
 
 
 const index = () => {
@@ -30,10 +31,10 @@ const index = () => {
 
                 <ul className="overview__list">
                     {
-                        array.length > 0 ? array.map((element, index) => (
+                        array.length > 0 ? array.slice(19,25).map((element, index) => (
                             <li key={index} className="overview__list--item">
                                 <div className="overview__list--item--up">
-                                    <a className='overview__list--item--up-link' href="#">{element.name}</a>
+                                    <a className='overview__list--item--up-link' href={element.html_url}>{element.name}</a>
                                     <span className='overview__list--item--up-circle'>{element.visibility}</span>
                                 </div>
                                 <p className="overview__list--item-text">{element.description}</p>
@@ -45,6 +46,10 @@ const index = () => {
                         )) : <h1 className='loading'>Loading . . .</h1>
                     }
                 </ul>
+
+                <div className='github'>
+                    <img className='github-img ms-2' src={Github} alt="Github" />
+                </div>
 
             </div>
         </>
