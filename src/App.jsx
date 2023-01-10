@@ -13,10 +13,11 @@ import Following from "./pages/Following";
 const App = () => {
 
   const [state, setState] = useState(false);
-
+  const [apiValue, setApiValue] = useState(localStorage.getItem("key") || "dilshodbek-web-01");
+  
   return (
     <>
-      <Context.Provider value={{ state: state, setState: setState }}>
+      <Context.Provider value={{ state: state, setState: setState, apiValue, setApiValue }}>
         <Navbar />
         <SideUP />
         <div className="container">

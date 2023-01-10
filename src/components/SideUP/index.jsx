@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Context } from '../../context/Context';
 import "./style.scss";
 import { NavLink } from "react-router-dom";
 
@@ -20,6 +21,22 @@ const index = () => {
         };
     })
 
+
+    const { apiValue } = useContext(Context);
+    const [array, setArray] = useState([]);
+
+    const api = async () => {
+        const request = await fetch(`https://api.github.com/users/${apiValue}`);
+        const result = await request.json();
+        console.log(result);
+        setArray(result);
+    }
+
+    useEffect(() => {
+        api();
+    }, [apiValue]);
+
+
     return (
         <>
         
@@ -28,9 +45,9 @@ const index = () => {
                     <div className="sideup">
                     
                         <div className="sideup__user"> 
-                            <img src="https://avatars.githubusercontent.com/u/113158204?s=40&v=4" alt="me" 
+                            <img src={array.avatar_url} alt="user-pic" 
                             className={!(scrollY > 380) ? "sideup__user-img d-none" : "sideup__user-img d-block"} />
-                            <p className={!(scrollY > 380) ? "sideup__user-text d-none" : "sideup__user-text d-block"} ><strong>dilshodbek-web-01</strong></p>
+                            <p className={!(scrollY > 380) ? "sideup__user-text d-none" : "sideup__user-text d-block"} ><strong>{array.login}</strong></p>
                         </div>
 
                         <ul className="sideup__list">
@@ -42,7 +59,7 @@ const index = () => {
                             <li className="sideup__list--item">
                                 <span className='sideup__list--item-icon me-2'> <i class="bi bi-journal-bookmark"></i> </span>
                                 <NavLink className='sideup__list--item-link' to="/repositories">Repositories</NavLink>
-                                <span className='sideup__list--item-number ms-2'>41</span>
+                                <span className='sideup__list--item-number ms-2'>{array.public_repos}</span>
                             </li>
 
                             <li className="sideup__list--item">

@@ -1,34 +1,42 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { Context } from '../../context/Context';
 import "./style.scss";
 
+
 const index = () => {
+
+    const { apiValue } = useContext(Context);
+    const [array, setArray] = useState([]);
+
+    const api = async () => {
+        const request = await fetch(`https://api.github.com/users/${apiValue}/followers`);
+        const result = await request.json();
+        console.log(result);
+        setArray(result);
+    }
+
+    useEffect(() => {
+        api();
+    }, [apiValue]);
+
     return (
         <>
             <div className="followers__wrapper">
 
-                <div className="followers border-bottom">
-                    <div className="followers__round">
-                        <img className="followers__round-img" src="https://avatars.githubusercontent.com/u/113175466?s=100&v=4" alt="person" />
-                        <div className='followers__round--content'>
-                            <p className="followers__round--content-name">Lochinbek</p>
-                            <p className="followers__round--content-user">web-developer001</p>
+                {
+                    array.length > 0 ? array.map((element, index) => (
+                        <div key={index} className="followers border-bottom">
+                            <div className="followers__round">
+                                <img className="followers__round-img" src={element.avatar_url} alt="person" />
+                                <div className='followers__round--content'>
+                                    {/* <p className="followers__round--content-name">name</p> */}
+                                    <p className="followers__round--content-user">{element.login}</p>
+                                </div>
+                            </div>
+                            <button className="followers-btn">Unfollow</button>
                         </div>
-                        {/* <p className="followers__round-bio">DASTURCHI</p> */}
-                    </div>
-                    <button className="followers-btn">Unfollow</button>
-                </div>
-
-                <div className="followers border-bottom">
-                    <div className="followers__round">
-                        <img className="followers__round-img" src="https://avatars.githubusercontent.com/u/113175466?s=100&v=4" alt="person" />
-                        <div className='followers__round--content'>
-                            <p className="followers__round--content-name">Lochinbek</p>
-                            <p className="followers__round--content-user">web-developer001</p>
-                        </div>
-                        {/* <p className="followers__round-bio">DASTURCHI</p> */}
-                    </div>
-                    <button className="followers-btn">Unfollow</button>
-                </div>
+                    )) : <h1 className='loading'>Loading . . .</h1>
+                }
 
             </div>
         </>

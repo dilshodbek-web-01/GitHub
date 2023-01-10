@@ -1,15 +1,43 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Context } from '../../context/Context';
 import "./style.scss";
 import { NavLink } from "react-router-dom";
 
 const index = () => {
 
-    const { state, setState } = useContext(Context);
-    
+    const [value, setValue] = useState(localStorage.getItem("key") || "dilshodbek-web-01");
+    const { state, setState, apiValue, setApiValue } = useContext(Context);
+
     const menuClick = () => {
         setState(state => !state);
     }
+
+    const valueObject = {
+        value: value.trim().length === 0
+    }
+
+    const Clicked = (e) => {
+        e.preventDefault();
+        if (!valueObject.value) {
+            setApiValue(value);
+            return;
+        }
+    }
+
+
+    const [array, setArray] = useState([]);
+
+    const api = async () => {
+        const request = await fetch(`https://api.github.com/users/${apiValue}`);
+        const result = await request.json();
+        console.log(result);
+        setArray(result);
+    }
+
+    useEffect(() => {
+        api();
+    }, [apiValue]);
+
 
     return (
         <>
@@ -19,10 +47,20 @@ const index = () => {
                     <div className="nav__left">
                         <span className='nav__left-github'> <i class="bi bi-github"></i>
                         </span>
-                        <label className='nav__left-label' htmlFor="#">
-                            <input className='nav__left-label-input' type="search" placeholder='Search or jump to...' />
-                            <span className='nav__left-label-slash'>/</span>
-                        </label>
+                        <form action="#" onSubmit={(event) => Clicked(event)}>
+                            <label className='nav__left-label' htmlFor="#">
+                                <input
+                                    className='nav__left-label-input'
+                                    type="search"
+                                    value={value}
+                                    onChange={(e) => {
+                                        setValue(e.target.value);
+                                        localStorage.setItem("key", e.target.value);
+                                    }}
+                                    placeholder='Search or jump to...' />
+                                <button type="submit" className='nav__left-label-slash'>/</button>
+                            </label>
+                        </form>
 
                         <ul className="nav__list">
                             <li className="nav__list--item">
@@ -62,7 +100,7 @@ const index = () => {
                         </div>
                         <span className='nav__right--round'>
                             <span className='nav__right--round-blue'></span>
-                            <img className='nav__right--round-img' src="https://avatars.githubusercontent.com/u/113158204?s=40&v=4" alt="round" />
+                            <img className='nav__right--round-img' src={array.avatar_url} alt="avatar" />
                             <span className='nav__right--round-triangle'> <i class="bi bi-caret-down-fill"></i> </span>
                         </span>
                     </div>
@@ -71,7 +109,10 @@ const index = () => {
 
                 <div className={state ? "nav__menu d-block" : "d-none"}>
 
-                    <input className='nav__menu-input' type="search" placeholder='Search GitHub' />
+                    <input value={value} onChange={(e) => {
+                        setValue(e.target.value);
+                        localStorage.setItem("key")
+                    }} className='nav__menu-input' type="search" placeholder='Search GitHub' />
 
                     <ul className="nav__ul">
                         <li className="nav__ul--item">

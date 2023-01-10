@@ -178,6 +178,35 @@
             }
         }
     }
+
+    &__pagi {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 50px;
+
+        &-btn {
+            font-size: 14px;
+            color: #8c959f;
+            background-color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid transparent;
+            &:hover {
+                border: 1px solid #d0d7de;
+            }
+
+            &-left {
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            &-right {
+                font-size: 12px;
+                font-weight: 500;
+            }
+        }
+    }
 }
 
 .extraTwoo {
@@ -241,5 +270,10 @@
     outline: none;
     border-radius: 5px;
     order: 9;
+}
+
+.repo__pagi {
+    justify-content: start;
+    
 }
 }

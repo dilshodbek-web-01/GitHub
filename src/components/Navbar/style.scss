@@ -52,6 +52,7 @@
                     border: 1px solid #979A9C;
                     border-radius: 3px;
                     text-align: center;
+                    background-color: black;
                 }
             }
         }
@@ -123,8 +124,8 @@
                     border-radius: 10px;
                     background-color: blue;
                     position: absolute;
-                    right: 10px;
-                    top: 0;
+                    right: 8px;
+                    top: -2px;
                 }
 
                 &-triangle {
