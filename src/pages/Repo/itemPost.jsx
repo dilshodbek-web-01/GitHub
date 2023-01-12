@@ -14,15 +14,21 @@ const itemPost = ({ array, limt, lastPage, active, paginate }) => {
                 {
                     array.length > 0 ?
                         lastPage.map((element, index) => (
-                            <li className="repo__list--item border-top border-bottom pt-4 pb-2" key={index}>
+                            <li className="repo__list--item border-top border-bottom" key={index}>
                                 <div className="repo__list--item--left">
                                     <a href={element.html_url} className="repo__list--item--left-name">{element.name}</a>
                                     <span className="repo__list--item--left-circle">{element.visibility}</span>
                                     <p className="repo__list--item--left-text">{element.description}</p>
                                     <div className="repo__list--item--left__down">
                                         <div className="repo__list--item--left__down--first">
-                                            <button className="repo__list--item--left__down--first-round"></button>
-                                            <p className="repo__list--item--left__down--first-text">{element.language}</p>
+
+                                            <p className={`repo__list--item--left__down--first-text colors
+                                              ${element.language === "JavaScript" ? "yellow" :
+                                                    element.language === "CSS" ? "purple" :
+                                                        element.language === "HTML" ? "red" :
+                                                            element.language === "SCSS" ? "pink" : ""
+                                                }
+                                            `}>{element.language}</p>
                                         </div>
                                         <p className="repo__list--item--left__down-date">Updated 5 days ago</p>
                                     </div>
@@ -36,10 +42,10 @@ const itemPost = ({ array, limt, lastPage, active, paginate }) => {
                                     <hr className='repo__list--item--right-hr' />
                                 </div>
                             </li>
-                        )) : <h1>Loading . . .</h1>
+                        )) : <div className='loader__wrapper'> <span class="loader"></span> </div>
                 }
 
-                <li className='list-unstyled'> 
+                <li className='list-unstyled'>
                     <nav aria-label="Page navigation example">
                         <div className="pagination d-flex justify-content-center gap-2 mt-4 mb-5">
                             {point.map((item, id) => {

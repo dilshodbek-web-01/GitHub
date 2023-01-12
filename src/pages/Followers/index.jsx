@@ -35,7 +35,7 @@ const index = () => {
                             </div>
                             <button className="followers-btn">Unfollow</button>
                         </div>
-                    )) : <h1 className='loading'>Loading . . .</h1>
+                    )) : <div className='loader__wrapper'> <span class="loader"></span> </div>
                 }
 
             </div>

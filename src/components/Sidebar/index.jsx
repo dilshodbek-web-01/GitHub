@@ -28,7 +28,7 @@ const index = () => {
                         <span className='sidebar__content--round'>
                             <span className='sidebar__content--round-smile'>
                                 <i class="bi bi-emoji-smile"></i>
-                                <p className='sidebar__content--round-text'>Set status</p>
+                                {/* <p className='sidebar__content--round-text'>Set status</p> */}
                             </span>
                         </span>
                         <div>

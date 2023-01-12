@@ -69,6 +69,7 @@
 
         &--round {
             position: absolute;
+
             text-align: center;
             top: 231px;
             right: 15px;
@@ -79,10 +80,26 @@
             border-radius: 100%;
             background-color: white;
 
+          &:hover{
+            text-align: start;
+            top: 231px;
+            right: -51px;
+            width: 100px;
+            padding: 7px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            // transition: all 0.05s ease;
+          }
 
-            &-text {
-                display: none;
-            }
+          &:hover::after {
+            position: relative;
+            content: "Set status";
+            font-size: 12px;
+            color: blue;
+            transition: all 1s cubic-bezier(1,-0.12, 1,-0.2);
+          }
         }
     }
 }
@@ -199,6 +216,12 @@
 
                 &-smile {
                     right: 0;
+                }
+                
+                &::after {
+                    content: "Set status";
+                    font-size: 12px;
+                    margin: 0 0 0 10px;
                 }
 
                 &-text {

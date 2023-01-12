@@ -31,7 +31,7 @@ const index = () => {
 
                 <ul className="overview__list">
                     {
-                        array.length > 0 ? array.slice(19,25).map((element, index) => (
+                        array.length > 0 ? array.slice(19, 25).map((element, index) => (
                             <li key={index} className="overview__list--item">
                                 <div className="overview__list--item--up">
                                     <a className='overview__list--item--up-link' href={element.html_url}>{element.name}</a>
@@ -39,11 +39,17 @@ const index = () => {
                                 </div>
                                 <p className="overview__list--item-text">{element.description}</p>
                                 <div className='overview__list--item--down'>
-                                    <button className='overview__list--item--down-round'></button>
-                                    <p className="overview__list--item--down-text2">{element.language}</p>
+
+                                    <p className={`overview__list--item--down-text2 colors
+                                    ${element.language === "JavaScript" ? "yellow" :
+                                            element.language === "CSS" ? "purple" :
+                                                element.language === "HTML" ? "red" :
+                                                    element.language === "SCSS" ? "pink" : ""
+                                        }
+                                    `}>{element.language}</p>
                                 </div>
                             </li>
-                        )) : <h1 className='loading'>Loading . . .</h1>
+                        )) : <div className='loader__wrapper'> <span class="loader"></span> </div>
                     }
                 </ul>
 

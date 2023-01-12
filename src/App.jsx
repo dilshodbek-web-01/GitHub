@@ -24,7 +24,7 @@ const App = () => {
           <main className='main'>
             <Sidebar />
             <Routes>
-              <Route path="/overview" element={<Overview />} />
+              <Route path="/" element={<Overview />} />
               <Route path="/repositories" element={<Repo />} />
               <Route path="/followers" element={<Followers />} />
               <Route path="/following" element={<Following />} />

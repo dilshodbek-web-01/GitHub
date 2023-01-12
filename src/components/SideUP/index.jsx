@@ -53,7 +53,7 @@ const index = () => {
                         <ul className="sideup__list">
                             <li className="sideup__list--item">
                                 <span className='sideup__list--item-icon me-2'> <i class="bi bi-book"></i> </span>
-                                <NavLink className='sideup__list--item-link' to="/overview">Overview</NavLink>
+                                <NavLink className='sideup__list--item-link' to="/">Overview</NavLink>
                             </li>
 
                             <li className="sideup__list--item">
