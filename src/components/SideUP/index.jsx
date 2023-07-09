@@ -39,14 +39,14 @@ const index = () => {
 
     return (
         <>
-        
-            <div className={!(scrollY > 370 )? "sideUP" : "sideUP zindex"}>
+
+            <div className={!(scrollY > 370) ? "sideUP" : "sideUP zindex"}>
                 <div className="container">
                     <div className="sideup">
-                    
-                        <div className="sideup__user"> 
-                            <img src={array.avatar_url} alt="user-pic" 
-                            className={!(scrollY > 380) ? "sideup__user-img d-none" : "sideup__user-img d-block"} />
+
+                        <div className="sideup__user">
+                            <img src={array.avatar_url} alt="user-pic"
+                                className={!(scrollY > 380) ? "sideup__user-img d-none" : "sideup__user-img d-block"} />
                             <p className={!(scrollY > 380) ? "sideup__user-text d-none" : "sideup__user-text d-block"} ><strong>{array.login}</strong></p>
                         </div>
 
